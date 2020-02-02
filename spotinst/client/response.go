@@ -20,6 +20,18 @@ type Response struct {
 	} `json:"response"`
 }
 
+//RsResponse - This different response was created because the
+//Right Sizing API reponse is a single Items object (and not an array)
+type RsResponse struct {
+	Request struct {
+		ID string `json:"id"`
+	} `json:"request"`
+	Response struct {
+		Errors []responseError `json:"errors"`
+		Items  json.RawMessage `json:"items"`
+	} `json:"response"`
+}
+
 type responseError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
